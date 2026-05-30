@@ -1,0 +1,71 @@
+.hero {
+  min-height: 240rpx;
+  border-radius: 34rpx;
+  padding: 36rpx;
+  color: #fff;
+  box-sizing: border-box;
+  background: radial-gradient(circle at 80% 10%, rgba(255,255,255,0.34), transparent 24%), linear-gradient(135deg, #1f1210 0%, #ff0036 48%, #ff7a00 100%);
+  box-shadow: 0 24rpx 54rpx rgba(255, 0, 54, 0.24);
+  margin-bottom: 26rpx;
+}
+.hero-kicker {
+  font-size: 22rpx;
+  opacity: 0.75;
+  letter-spacing: 4rpx;
+}
+.hero-title {
+  margin-top: 18rpx;
+  font-size: 48rpx;
+  font-weight: 900;
+}
+.hero-sub {
+  margin-top: 18rpx;
+  font-size: 25rpx;
+  opacity: 0.9;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18rpx;
+  margin-bottom: 24rpx;
+}
+.stat-card {
+  background: #fff;
+  border-radius: 26rpx;
+  padding: 24rpx;
+  box-shadow: 0 14rpx 32rpx rgba(42, 23, 20, 0.07);
+}
+.stat-label {
+  color: #8d7872;
+  font-size: 23rpx;
+}
+.stat-value {
+  margin-top: 12rpx;
+  color: #2a1714;
+  font-size: 38rpx;
+  font-weight: 900;
+}
+.stat-value.warn {
+  color: #ff0036;
+}
+.stat-extra {
+  margin-top: 8rpx;
+  color: #b39c96;
+  font-size: 22rpx;
+}
+.month-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+}
+.month-number {
+  font-size: 44rpx;
+  font-weight: 900;
+  margin: 10rpx 0;
+}
+.divider {
+  width: 1rpx;
+  height: 110rpx;
+  background: #f1d9d5;
+}

@@ -1,0 +1,38 @@
+<view class="container">
+  <view class="card">
+    <view class="section-title">{{form.id ? '编辑入库信息' : '添加入库信息'}}</view>
+    <view class="form-grid">
+      <picker mode="date" value="{{form.date}}" data-field="date" bindchange="onPicker"><view class="picker">入库日期：{{form.date || '请选择'}}</view></picker>
+      <input class="input" placeholder="商品名称" value="{{form.name}}" data-field="name" bindinput="onInput" />
+      <input class="input" placeholder="商品规格" value="{{form.spec}}" data-field="spec" bindinput="onInput" />
+      <input class="input" type="digit" placeholder="商品单价" value="{{form.price}}" data-field="price" bindinput="onInput" />
+      <input class="input" type="number" placeholder="商品数量" value="{{form.quantity}}" data-field="quantity" bindinput="onInput" />
+      <input class="input" placeholder="供应商" value="{{form.supplier}}" data-field="supplier" bindinput="onInput" />
+      <input class="input full" placeholder="备注" value="{{form.remark}}" data-field="remark" bindinput="onInput" />
+    </view>
+    <button class="primary-btn" bindtap="save">{{form.id ? '保存修改' : '添加入库'}}</button>
+    <button wx:if="{{form.id}}" class="ghost-btn" bindtap="resetForm">取消编辑</button>
+  </view>
+
+  <view class="card">
+    <view class="section-title">入库记录</view>
+    <view class="filter-row">
+      <picker mode="date" value="{{startDate}}" data-field="startDate" bindchange="onFilter"><view class="picker">开始：{{startDate || '不限'}}</view></picker>
+      <picker mode="date" value="{{endDate}}" data-field="endDate" bindchange="onFilter"><view class="picker">结束：{{endDate || '不限'}}</view></picker>
+    </view>
+    <view class="toolbar">
+      <button class="ghost-btn" bindtap="clearFilter">清空日期</button>
+      <button class="ghost-btn" bindtap="toggleSelectAll">{{allSelected ? '取消全选' : '全选'}}</button>
+      <button class="danger-btn" bindtap="deleteSelected">一键删除</button>
+    </view>
+    <view wx:if="{{filtered.length === 0}}" class="empty">暂无入库记录</view>
+    <checkbox-group bindchange="onSelectChange">
+      <label class="record" wx:for="{{filtered}}" wx:key="id">
+        <view class="record-head"><checkbox value="{{item.id}}" checked="{{selectedMap[item.id]}}" color="#ff0036" /><view class="record-title grow">{{item.name}}</view><button size="mini" class="mini-edit" data-id="{{item.id}}" bindtap="edit">编辑</button></view>
+        <view class="record-sub">{{item.date}} · {{item.spec}} · {{item.supplier}}</view>
+        <view class="record-sub">数量 {{item.quantity}} 件 · 单价 ¥{{item.price}} · <text class="amount">金额 ¥{{item.total}}</text></view>
+        <view class="record-sub" wx:if="{{item.remark}}">备注：{{item.remark}}</view>
+      </label>
+    </checkbox-group>
+  </view>
+</view>

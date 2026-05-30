@@ -1,0 +1,46 @@
+<view class="container">
+  <view class="hero">
+    <view>
+      <view class="hero-kicker">TMALL STYLE OMS</view>
+      <view class="hero-title">拾纷电商管理系统</view>
+      <view class="hero-sub">实时掌握库存、入库、出库与成本表现</view>
+    </view>
+  </view>
+
+  <view class="stats-grid">
+    <view class="stat-card" wx:for="{{stats}}" wx:key="label">
+      <view class="stat-label">{{item.label}}</view>
+      <view class="stat-value {{item.warn ? 'warn' : ''}}">{{item.value}}</view>
+      <view class="stat-extra">{{item.extra}}</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">本月累计出入库数据</view>
+    <view class="month-row">
+      <view>
+        <view class="muted">本月入库</view>
+        <view class="month-number">{{month.inQty}} 件</view>
+        <view class="amount">¥{{month.inAmount}}</view>
+      </view>
+      <view class="divider"></view>
+      <view>
+        <view class="muted">本月出库</view>
+        <view class="month-number">{{month.outQty}} 件</view>
+        <view class="amount">¥{{month.outAmount}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">库存预警商品</view>
+    <view wx:if="{{warningItems.length === 0}}" class="empty">暂无库存预警</view>
+    <view class="record" wx:for="{{warningItems}}" wx:key="id">
+      <view class="record-head">
+        <view class="record-title">{{item.name}}</view>
+        <view class="tag">低于 {{item.warning}}</view>
+      </view>
+      <view class="record-sub">{{item.spec}} · 当前 {{item.quantity}} 件 · {{item.supplier}}</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,38 @@
+<view class="container">
+  <view class="card">
+    <view class="section-title">{{form.id ? '编辑商品' : '添加商品'}}</view>
+    <view class="form-grid">
+      <input class="input" placeholder="商品分类" value="{{form.category}}" data-field="category" bindinput="onInput" />
+      <input class="input" placeholder="商品名称" value="{{form.name}}" data-field="name" bindinput="onInput" />
+      <input class="input" placeholder="商品规格" value="{{form.spec}}" data-field="spec" bindinput="onInput" />
+      <input class="input" type="digit" placeholder="商品单价" value="{{form.price}}" data-field="price" bindinput="onInput" />
+      <input class="input" type="number" placeholder="在库数量" value="{{form.quantity}}" data-field="quantity" bindinput="onInput" />
+      <input class="input" placeholder="供应商" value="{{form.supplier}}" data-field="supplier" bindinput="onInput" />
+      <input class="input" type="number" placeholder="预警数量" value="{{form.warning}}" data-field="warning" bindinput="onInput" />
+      <input class="input" placeholder="备注" value="{{form.remark}}" data-field="remark" bindinput="onInput" />
+    </view>
+    <button class="primary-btn" bindtap="save">{{form.id ? '保存修改' : '添加商品'}}</button>
+    <button wx:if="{{form.id}}" class="ghost-btn" bindtap="resetForm">取消编辑</button>
+  </view>
+
+  <view class="card">
+    <view class="section-title">商品库存列表</view>
+    <view class="toolbar">
+      <button class="ghost-btn" bindtap="toggleSelectAll">{{allSelected ? '取消全选' : '全选'}}</button>
+      <button class="danger-btn" bindtap="deleteSelected">一键删除所选</button>
+    </view>
+    <view wx:if="{{list.length === 0}}" class="empty">暂无商品，请先添加</view>
+    <checkbox-group bindchange="onSelectChange">
+      <label class="record stock-card" wx:for="{{list}}" wx:key="id">
+        <view class="record-head">
+          <checkbox value="{{item.id}}" checked="{{selectedMap[item.id]}}" color="#ff0036" />
+          <view class="record-title grow">{{item.name}}</view>
+          <button size="mini" class="mini-edit" data-id="{{item.id}}" bindtap="edit">编辑</button>
+        </view>
+        <view class="record-sub"><text class="tag">{{item.category}}</text>{{item.spec}} · {{item.supplier}}</view>
+        <view class="record-sub">在库 {{item.quantity}} 件 / 预警 {{item.warning}} 件 / 单价 <text class="amount">¥{{item.price}}</text></view>
+        <view class="record-sub" wx:if="{{item.remark}}">备注：{{item.remark}}</view>
+      </label>
+    </checkbox-group>
+  </view>
+</view>

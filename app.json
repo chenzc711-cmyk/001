@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/dashboard/dashboard",
+    "pages/inventory/inventory",
+    "pages/inbound/inbound",
+    "pages/return/return",
+    "pages/outbound/outbound"
+  ],
+  "window": {
+    "navigationBarTitleText": "拾纷电商管理系统",
+    "navigationBarBackgroundColor": "#ff0036",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f7f3f2"
+  },
+  "tabBar": {
+    "color": "#6f5c58",
+    "selectedColor": "#ff0036",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/dashboard/dashboard",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/inventory/inventory",
+        "text": "库存"
+      },
+      {
+        "pagePath": "pages/inbound/inbound",
+        "text": "入库"
+      },
+      {
+        "pagePath": "pages/return/return",
+        "text": "退货"
+      },
+      {
+        "pagePath": "pages/outbound/outbound",
+        "text": "出库"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

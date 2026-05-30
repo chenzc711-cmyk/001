@@ -1,0 +1,19 @@
+{
+  "description": "拾纷电商管理系统微信小程序",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "3.7.7",
+  "appid": "touristappid",
+  "projectname": "sfds-warehouse-miniapp",
+  "condition": {}
+}
