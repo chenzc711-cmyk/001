@@ -1,0 +1,7 @@
+.grow { flex: 1; }
+.stock-card { display: block; }
+.mini-edit {
+  color: #ff0036;
+  background: #fff0f2;
+  border-radius: 999rpx;
+}

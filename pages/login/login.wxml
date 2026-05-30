@@ -1,0 +1,13 @@
+<view class="login-page">
+  <view class="brand-card">
+    <view class="brand-mark">拾</view>
+    <view class="brand-title">拾纷电商管理系统</view>
+    <view class="brand-sub">天猫店铺风格 · 仓库进销存管理</view>
+  </view>
+  <view class="card login-card">
+    <view class="section-title">请输入公司代码</view>
+    <input class="input" password placeholder="默认公司代码 sfds" value="{{code}}" bindinput="onInput" />
+    <button class="primary-btn" bindtap="login">进入系统</button>
+    <view class="muted">用于保护店铺仓库数据，默认代码为 sfds。</view>
+  </view>
+</view>

@@ -1,0 +1,36 @@
+<view class="container">
+  <view class="card">
+    <view class="section-title">{{form.id ? '编辑退货入库' : '添加退货入库'}}</view>
+    <view class="form-grid">
+      <picker mode="date" value="{{form.date}}" data-field="date" bindchange="onPicker"><view class="picker">退货日期：{{form.date || '请选择'}}</view></picker>
+      <input class="input" placeholder="订单号" value="{{form.orderNo}}" data-field="orderNo" bindinput="onInput" />
+      <input class="input" placeholder="物流公司" value="{{form.expressCompany}}" data-field="expressCompany" bindinput="onInput" />
+      <input class="input" placeholder="物流单号" value="{{form.expressNo}}" data-field="expressNo" bindinput="onInput" />
+      <input class="input" placeholder="商品名称" value="{{form.name}}" data-field="name" bindinput="onInput" />
+      <input class="input" placeholder="商品规格" value="{{form.spec}}" data-field="spec" bindinput="onInput" />
+      <input class="input" type="number" placeholder="数量" value="{{form.quantity}}" data-field="quantity" bindinput="onInput" />
+      <input class="input" placeholder="货物状态" value="{{form.status}}" data-field="status" bindinput="onInput" />
+      <input class="input full" placeholder="备注" value="{{form.remark}}" data-field="remark" bindinput="onInput" />
+    </view>
+    <button class="primary-btn" bindtap="save">{{form.id ? '保存修改' : '添加退货入库'}}</button>
+    <button wx:if="{{form.id}}" class="ghost-btn" bindtap="resetForm">取消编辑</button>
+  </view>
+
+  <view class="card">
+    <view class="section-title">退货入库记录</view>
+    <view class="filter-row">
+      <picker mode="date" value="{{startDate}}" data-field="startDate" bindchange="onFilter"><view class="picker">开始：{{startDate || '不限'}}</view></picker>
+      <picker mode="date" value="{{endDate}}" data-field="endDate" bindchange="onFilter"><view class="picker">结束：{{endDate || '不限'}}</view></picker>
+    </view>
+    <view class="toolbar"><button class="ghost-btn" bindtap="clearFilter">清空日期</button><button class="ghost-btn" bindtap="toggleSelectAll">{{allSelected ? '取消全选' : '全选'}}</button><button class="danger-btn" bindtap="deleteSelected">一键删除</button></view>
+    <view wx:if="{{filtered.length === 0}}" class="empty">暂无退货入库记录</view>
+    <checkbox-group bindchange="onSelectChange">
+      <label class="record" wx:for="{{filtered}}" wx:key="id">
+        <view class="record-head"><checkbox value="{{item.id}}" checked="{{selectedMap[item.id]}}" color="#ff0036" /><view class="record-title grow">{{item.name}}</view><button size="mini" class="mini-edit" data-id="{{item.id}}" bindtap="edit">编辑</button></view>
+        <view class="record-sub">{{item.date}} · 订单 {{item.orderNo}} · {{item.spec}} · {{item.quantity}} 件</view>
+        <view class="record-sub">{{item.expressCompany}} {{item.expressNo}} · <text class="tag">{{item.status}}</text></view>
+        <view class="record-sub" wx:if="{{item.remark}}">备注：{{item.remark}}</view>
+      </label>
+    </checkbox-group>
+  </view>
+</view>
